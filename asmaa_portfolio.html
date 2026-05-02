@@ -1,0 +1,2576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asmaa Kareem Mustafa — Chemistry & Sustainability</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest: #0d2818;
+        --deep: #1a3d2b;
+        --moss: #2d5a3d;
+        --sage: #4a7c59;
+        --leaf: #6aaf78;
+        --mint: #a8d5b5;
+        --cream: #f4efe3;
+        --warm: #ede5d0;
+        --sand: #d4c9a8;
+        --amber: #c8a96e;
+        --amber-d: #a0813e;
+        --white: #fdfaf4;
+        --text: #1a2e1f;
+        --text-dim: rgba(26, 46, 31, 0.6);
+        --text-faint: rgba(26, 46, 31, 0.35);
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "DM Sans", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--cream);
+        color: var(--text);
+        font-family: var(--sans);
+        font-weight: 300;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      @media (hover: none), (pointer: coarse) {
+        body { cursor: auto; }
+        .cursor, .cursor-ring { display: none !important; }
+      }
+
+      /* Cursor */
+      .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 9px;
+        height: 9px;
+        background: var(--moss);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.25s,
+          height 0.25s,
+          background 0.25s;
+      }
+      .cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border: 1.5px solid var(--sage);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+        transition:
+          width 0.3s,
+          height 0.3s,
+          opacity 0.3s;
+      }
+      .cursor.hover {
+        width: 16px;
+        height: 16px;
+        background: var(--leaf);
+      }
+      .cursor-ring.hover {
+        width: 52px;
+        height: 52px;
+        border-color: var(--leaf);
+        opacity: 0.25;
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--warm);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--sage);
+        border-radius: 2px;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.4rem 3.5rem;
+        z-index: 100;
+        transition:
+          background 0.4s,
+          padding 0.4s,
+          box-shadow 0.4s;
+      }
+      nav.scrolled {
+        background: rgba(244, 239, 227, 0.92);
+        backdrop-filter: blur(16px);
+        padding: 0.9rem 3.5rem;
+        box-shadow: 0 1px 0 rgba(74, 124, 89, 0.15);
+      }
+      .nav-logo {
+        font-family: var(--serif);
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--forest);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+      }
+      .nav-logo em {
+        font-style: italic;
+        color: var(--sage);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: var(--sage);
+        transition: width 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--forest);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--moss);
+        padding: 0.6rem 1.5rem;
+        text-decoration: none;
+        border-radius: 2px;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+      }
+      .nav-cta:hover {
+        background: var(--sage);
+        transform: translateY(-1px);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--forest);
+        transition: all 0.3s;
+      }
+
+      /* MOBILE MENU */
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        background: var(--forest);
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+      }
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+      .mobile-menu a {
+        font-family: var(--serif);
+        font-size: 2.2rem;
+        font-weight: 400;
+        color: var(--cream);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .mobile-menu a:hover {
+        color: var(--mint);
+      }
+
+      /* ═══ HERO ═══ */
+      #hero {
+        min-height: 100vh;
+        background: var(--forest);
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+
+      /* Organic background shapes */
+      .hero-bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+      }
+      .hbc-1 {
+        width: 600px;
+        height: 600px;
+        background: rgba(45, 90, 61, 0.55);
+        top: -150px;
+        right: -100px;
+      }
+      .hbc-2 {
+        width: 400px;
+        height: 400px;
+        background: rgba(106, 175, 120, 0.12);
+        bottom: -80px;
+        left: 10%;
+      }
+      .hbc-3 {
+        width: 200px;
+        height: 200px;
+        background: rgba(200, 169, 110, 0.1);
+        top: 30%;
+        right: 25%;
+      }
+
+      /* Leaf SVG pattern */
+      .hero-leaf-pattern {
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5 C18 5 8 18 8 30 C8 42 18 55 30 55 C42 55 52 42 52 30 C52 18 42 5 30 5 Z M30 10 C30 10 20 22 20 30 C20 38 30 50 30 50 C30 50 40 38 40 30 C40 22 30 10 30 10 Z' fill='%23ffffff'/%3E%3C/svg%3E");
+        background-size: 60px 60px;
+        pointer-events: none;
+      }
+
+      .hero-left {
+        padding: 0 3.5rem 0 3.5rem;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--mint);
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: slideRight 0.8s ease 0.2s forwards;
+      }
+      .hero-eyebrow-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--leaf);
+        border-radius: 50%;
+        animation: pulse 2s ease infinite;
+      }
+
+      .hero-name {
+        font-family: var(--serif);
+        font-size: clamp(3rem, 5.5vw, 5.5rem);
+        font-weight: 400;
+        line-height: 1.05;
+        color: var(--white);
+        margin-bottom: 0.6rem;
+        opacity: 0;
+        animation: slideRight 0.9s ease 0.4s forwards;
+      }
+      .hero-name em {
+        font-style: italic;
+        color: var(--mint);
+      }
+
+      .hero-title {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--mint);
+        opacity: 0.7;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: slideRight 0.9s ease 0.6s forwards;
+      }
+
+      .hero-tagline {
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: rgba(168, 213, 181, 0.75);
+        max-width: 430px;
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: slideRight 0.9s ease 0.8s forwards;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        opacity: 0;
+        animation: slideRight 0.9s ease 1s forwards;
+      }
+
+      .btn-hero {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--forest);
+        background: var(--mint);
+        padding: 0.95rem 2.2rem;
+        text-decoration: none;
+        border-radius: 2px;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+      }
+      .btn-hero:hover {
+        background: var(--white);
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mint);
+        border: 1px solid rgba(168, 213, 181, 0.35);
+        padding: 0.9rem 2rem;
+        text-decoration: none;
+        border-radius: 2px;
+        transition:
+          border-color 0.3s,
+          color 0.3s;
+      }
+      .btn-outline:hover {
+        border-color: var(--mint);
+        color: var(--white);
+      }
+
+      /* Hero right – portrait + data */
+      .hero-right {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        z-index: 2;
+      }
+
+      .hero-portrait-frame {
+        position: relative;
+        opacity: 0;
+        animation: fadeUp 1s ease 0.5s forwards;
+      }
+
+      /* Hexagon frame using CSS clip-path */
+      .portrait-hex {
+        width: 280px;
+        height: 320px;
+        clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+        background: linear-gradient(135deg, var(--moss) 0%, var(--deep) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .portrait-hex-inner {
+        width: 260px;
+        height: 300px;
+        clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+        display: flex;
+        overflow: hidden;
+        position: relative; /* important for image control */
+      }
+
+      /* Image inside */
+      .portrait-hex-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* fills the hex shape nicely */
+        object-position: center; /* adjust if needed */
+      }
+
+      /* Illustrated person SVG */
+      .portrait-svg {
+        width: 200px;
+        height: auto;
+      }
+
+      .hex-glow {
+        position: absolute;
+        inset: -20px;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(106, 175, 120, 0.2) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      /* Floating info pills */
+      .float-pill {
+        position: absolute;
+        background: var(--cream);
+        border-radius: 40px;
+        padding: 0.6rem 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        box-shadow: 0 8px 32px rgba(13, 40, 24, 0.25);
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--forest);
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+      }
+      .pill-icon {
+        font-size: 1rem;
+      }
+      .pill-label {
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+      .pill-val {
+        font-weight: 600;
+        color: var(--forest);
+        line-height: 1;
+      }
+
+      .pill-1 {
+        top: 15%;
+        left: -60px;
+        animation-delay: 1.2s;
+      }
+      .pill-2 {
+        bottom: 25%;
+        right: -50px;
+        animation-delay: 1.5s;
+      }
+      .pill-3 {
+        top: 55%;
+        left: -70px;
+        animation-delay: 1.8s;
+      }
+
+      .hero-scroll {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 3.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        opacity: 0;
+        animation: fadeIn 1s ease 2s forwards;
+      }
+      .hero-scroll span {
+        font-size: 0.58rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: rgba(168, 213, 181, 0.5);
+      }
+      .scroll-bar {
+        width: 40px;
+        height: 1px;
+        background: rgba(168, 213, 181, 0.35);
+        position: relative;
+        overflow: hidden;
+      }
+      .scroll-bar::after {
+        content: "";
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--mint);
+        animation: scrollAnim 2s ease infinite;
+      }
+
+      /* ═══ SECTIONS ═══ */
+      section {
+        padding: 6.5rem 3.5rem;
+      }
+
+      .sec-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--sage);
+        margin-bottom: 1rem;
+      }
+      .sec-label::before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1.5px;
+        background: var(--sage);
+      }
+
+      .sec-title {
+        font-family: var(--serif);
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--forest);
+        margin-bottom: 1rem;
+      }
+      .sec-title em {
+        font-style: italic;
+        color: var(--sage);
+      }
+
+      hr.sec-rule {
+        border: none;
+        border-top: 1px solid rgba(74, 124, 89, 0.2);
+        margin: 1.8rem 0;
+      }
+
+      /* ═══ ABOUT ═══ */
+      #about {
+        background: var(--white);
+      }
+
+      .about-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.9;
+        color: var(--text-dim);
+        margin-bottom: 1.2rem;
+      }
+
+      .about-objective {
+        background: var(--deep);
+        color: var(--mint);
+        padding: 2rem 2.2rem;
+        border-radius: 4px;
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        font-style: italic;
+        line-height: 1.7;
+        position: relative;
+        margin-bottom: 2rem;
+      }
+      .about-objective::before {
+        content: '"';
+        font-size: 4rem;
+        font-family: var(--serif);
+        color: var(--sage);
+        position: absolute;
+        top: -0.5rem;
+        left: 1.2rem;
+        line-height: 1;
+        opacity: 0.6;
+      }
+
+      .about-langs {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.8rem;
+      }
+      .lang-chip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem 1.3rem;
+        border: 1px solid rgba(74, 124, 89, 0.2);
+        border-radius: 4px;
+        background: var(--warm);
+        transition:
+          border-color 0.3s,
+          background 0.3s;
+      }
+      .lang-chip:hover {
+        border-color: var(--sage);
+        background: var(--cream);
+      }
+      .lang-name {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--forest);
+      }
+      .lang-level {
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--sage);
+        margin-top: 0.2rem;
+      }
+
+      /* About right – stats + badges */
+      .about-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .astat {
+        background: var(--cream);
+        border: 1px solid rgba(74, 124, 89, 0.15);
+        border-radius: 4px;
+        padding: 1.4rem;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+      }
+      .astat:hover {
+        border-color: var(--sage);
+        transform: translateY(-3px);
+      }
+      .astat-num {
+        font-family: var(--serif);
+        font-size: 2.2rem;
+        font-weight: 400;
+        color: var(--moss);
+        line-height: 1;
+        margin-bottom: 0.3rem;
+      }
+      .astat-label {
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+
+      .cert-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .cert-chip {
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--moss);
+        border: 1px solid rgba(45, 90, 61, 0.3);
+        background: rgba(45, 90, 61, 0.06);
+        padding: 0.4rem 0.9rem;
+        border-radius: 20px;
+        transition:
+          background 0.3s,
+          color 0.3s;
+      }
+      .cert-chip:hover {
+        background: var(--moss);
+        color: var(--white);
+      }
+
+      /* ═══ EXPERIENCE ═══ */
+      #experience {
+        background: var(--cream);
+      }
+      .exp-inner {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .exp-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 3rem;
+        position: relative;
+      }
+      .exp-grid::before {
+        content: "";
+        position: absolute;
+        left: 1.6rem;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          var(--sage),
+          rgba(74, 124, 89, 0.1)
+        );
+      }
+
+      .exp-card {
+        display: grid;
+        grid-template-columns: 3.5rem 1fr;
+        gap: 1.5rem;
+        padding-bottom: 2.8rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s,
+          transform 0.6s;
+      }
+      .exp-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .exp-dot-wrap {
+        display: flex;
+        justify-content: center;
+        padding-top: 0.4rem;
+        position: relative;
+        z-index: 1;
+      }
+      .exp-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid var(--sage);
+        background: var(--white);
+        box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.1);
+        flex-shrink: 0;
+      }
+      .exp-dot.current {
+        background: var(--sage);
+        box-shadow: 0 0 0 6px rgba(74, 124, 89, 0.15);
+      }
+
+      .exp-body {
+        background: var(--white);
+        border: 1px solid rgba(74, 124, 89, 0.12);
+        border-radius: 6px;
+        padding: 1.6rem;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .exp-body:hover {
+        border-color: rgba(74, 124, 89, 0.3);
+        box-shadow: 0 6px 24px rgba(45, 90, 61, 0.08);
+      }
+
+      .exp-period {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--sage);
+        margin-bottom: 0.4rem;
+      }
+      .exp-role {
+        font-family: var(--serif);
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: var(--forest);
+        margin-bottom: 0.2rem;
+      }
+      .exp-org {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--text-dim);
+        margin-bottom: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .exp-org-badge {
+        font-size: 0.55rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: rgba(74, 124, 89, 0.12);
+        color: var(--moss);
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+      }
+
+      .exp-bullets {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .exp-bullets li {
+        font-size: 0.83rem;
+        line-height: 1.7;
+        color: var(--text-dim);
+        padding-left: 1.2rem;
+        position: relative;
+      }
+      .exp-bullets li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.65rem;
+        width: 5px;
+        height: 1.5px;
+        background: var(--sage);
+      }
+
+      /* ═══ LAB TRAINING ═══ */
+      #training {
+        background: var(--deep);
+      }
+
+      .training-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .training-inner .sec-title {
+        color: var(--white);
+      }
+      .training-inner .sec-label {
+        color: var(--mint);
+      }
+      .training-inner .sec-label::before {
+        background: var(--mint);
+      }
+
+      .training-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+        margin-top: 3rem;
+      }
+
+      .train-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(168, 213, 181, 0.12);
+        border-radius: 6px;
+        padding: 2rem 1.8rem;
+        transition:
+          background 0.3s,
+          border-color 0.3s,
+          transform 0.3s;
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s,
+          transform 0.6s,
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .train-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .train-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(168, 213, 181, 0.3);
+        transform: translateY(-3px);
+      }
+
+      .train-icon {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+      }
+      .train-period {
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--leaf);
+        margin-bottom: 0.5rem;
+      }
+      .train-title {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: var(--white);
+        margin-bottom: 0.3rem;
+      }
+      .train-org {
+        font-size: 0.75rem;
+        color: rgba(168, 213, 181, 0.6);
+        margin-bottom: 0.9rem;
+      }
+      .train-desc {
+        font-size: 0.8rem;
+        line-height: 1.7;
+        color: rgba(168, 213, 181, 0.5);
+      }
+
+      /* ═══ PROJECTS ═══ */
+      #projects {
+        background: var(--white);
+      }
+      .projects-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .project-card {
+        background: var(--forest);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.7s,
+          transform 0.7s;
+      }
+      .project-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-visual {
+        background: linear-gradient(135deg, var(--moss) 0%, var(--deep) 100%);
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-visual::before {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid rgba(168, 213, 181, 0.15);
+        border-radius: 50%;
+        top: -50px;
+        left: -50px;
+      }
+      .project-visual::after {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border: 1px solid rgba(168, 213, 181, 0.1);
+        border-radius: 50%;
+        bottom: -30px;
+        right: -30px;
+      }
+
+      .project-big-icon {
+        font-size: 4rem;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 1rem;
+      }
+      .project-badge {
+        background: rgba(168, 213, 181, 0.15);
+        border: 1px solid rgba(168, 213, 181, 0.25);
+        color: var(--mint);
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .project-content {
+        padding: 3rem;
+      }
+      .project-period {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--leaf);
+        margin-bottom: 0.5rem;
+      }
+      .project-title {
+        font-family: var(--serif);
+        font-size: 1.7rem;
+        font-weight: 400;
+        color: var(--white);
+        margin-bottom: 0.4rem;
+      }
+      .project-sub {
+        font-size: 0.75rem;
+        color: rgba(168, 213, 181, 0.6);
+        margin-bottom: 1.2rem;
+      }
+
+      .project-highlights {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .proj-hl {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.82rem;
+        color: rgba(168, 213, 181, 0.7);
+        line-height: 1.5;
+      }
+      .proj-hl-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--leaf);
+        flex-shrink: 0;
+      }
+
+      .project-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1.8rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(168, 213, 181, 0.12);
+      }
+      .pstat-num {
+        font-family: var(--serif);
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: var(--mint);
+      }
+      .pstat-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(168, 213, 181, 0.5);
+      }
+
+      /* ═══ SKILLS ═══ */
+      #skills {
+        background: var(--cream);
+      }
+      .skills-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .skills-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-top: 3rem;
+      }
+
+      .skill-group-title {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--sage);
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .skill-group-title::before {
+        content: "";
+        display: block;
+        width: 16px;
+        height: 1px;
+        background: var(--sage);
+      }
+
+      .skill-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+
+      .skill-bar-item {
+      }
+      .skill-bar-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.4rem;
+      }
+      .skill-name {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--forest);
+      }
+      .skill-pct {
+        font-size: 0.65rem;
+        color: var(--sage);
+        font-weight: 600;
+      }
+      .skill-track {
+        height: 3px;
+        background: rgba(74, 124, 89, 0.15);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .skill-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--moss), var(--leaf));
+        border-radius: 2px;
+        width: 0;
+        transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      /* Core skills grid */
+      .core-skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+      }
+      .core-skill {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.8rem 1rem;
+        background: var(--white);
+        border: 1px solid rgba(74, 124, 89, 0.12);
+        border-radius: 4px;
+        font-size: 0.78rem;
+        color: var(--forest);
+        transition:
+          border-color 0.3s,
+          background 0.3s;
+      }
+      .core-skill:hover {
+        border-color: var(--sage);
+        background: rgba(74, 124, 89, 0.04);
+      }
+      .cs-icon {
+        font-size: 1rem;
+      }
+
+      /* Certifications */
+      .cert-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 0.5rem;
+      }
+      .cert-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.9rem 1.1rem;
+        background: var(--white);
+        border: 1px solid rgba(74, 124, 89, 0.12);
+        border-radius: 4px;
+        transition: border-color 0.3s;
+      }
+      .cert-item:hover {
+        border-color: rgba(74, 124, 89, 0.3);
+      }
+      .cert-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--sage);
+        flex-shrink: 0;
+      }
+      .cert-text {
+        font-size: 0.8rem;
+        color: var(--forest);
+        line-height: 1.4;
+      }
+      .cert-year {
+        font-size: 0.62rem;
+        color: var(--sage);
+        font-weight: 600;
+        margin-top: 0.1rem;
+      }
+
+      /* ═══ LEADERSHIP ═══ */
+      #leadership {
+        background: var(--forest);
+      }
+      .leadership-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .leadership-inner .sec-title {
+        color: var(--white);
+      }
+      .leadership-inner .sec-label {
+        color: var(--mint);
+      }
+      .leadership-inner .sec-label::before {
+        background: var(--mint);
+      }
+
+      .leader-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .leader-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(168, 213, 181, 0.12);
+        border-radius: 6px;
+        padding: 2rem;
+        transition:
+          background 0.3s,
+          border-color 0.3s,
+          transform 0.3s;
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease,
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .leader-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .leader-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(168, 213, 181, 0.25);
+        transform: translateY(-3px);
+      }
+
+      .leader-icon {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      .leader-period {
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--leaf);
+        margin-bottom: 0.4rem;
+      }
+      .leader-role {
+        font-family: var(--serif);
+        font-size: 1.15rem;
+        color: var(--white);
+        margin-bottom: 0.2rem;
+      }
+      .leader-org {
+        font-size: 0.75rem;
+        color: rgba(168, 213, 181, 0.55);
+        margin-bottom: 0.9rem;
+      }
+      .leader-desc {
+        font-size: 0.8rem;
+        line-height: 1.7;
+        color: rgba(168, 213, 181, 0.5);
+      }
+
+      /* ═══ CONTACT ═══ */
+      #contact {
+        background: var(--white);
+      }
+      .contact-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .contact-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 4rem;
+        margin-top: 3rem;
+      }
+
+      .contact-info-text {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--text-dim);
+        margin-bottom: 2rem;
+      }
+
+      .cinfo-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .cinfo-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .cinfo-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(45, 90, 61, 0.08);
+        border: 1px solid rgba(45, 90, 61, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .cinfo-item:hover .cinfo-icon {
+        background: var(--sage);
+        border-color: var(--sage);
+      }
+      .cinfo-label {
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--sage);
+        margin-bottom: 0.15rem;
+      }
+      .cinfo-val {
+        font-size: 0.85rem;
+        color: var(--text-dim);
+      }
+
+      .refs-section {
+        margin-top: 2.5rem;
+      }
+      .refs-title {
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--sage);
+        margin-bottom: 1rem;
+      }
+      .ref-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .ref-item {
+        font-size: 0.78rem;
+        color: var(--text-dim);
+        line-height: 1.5;
+        padding: 0.7rem 1rem;
+        background: var(--cream);
+        border-radius: 4px;
+        border-left: 2px solid var(--sage);
+      }
+      .ref-name {
+        font-weight: 600;
+        color: var(--forest);
+      }
+
+      /* Contact Form */
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+      .cf-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+      }
+      .cf-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .cf-label {
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 0.4rem;
+      }
+      .cf-input,
+      .cf-textarea {
+        background: var(--cream);
+        border: 1px solid rgba(74, 124, 89, 0.2);
+        padding: 0.8rem 1rem;
+        color: var(--forest);
+        font-family: var(--sans);
+        font-size: 0.85rem;
+        font-weight: 300;
+        outline: none;
+        border-radius: 3px;
+        transition: border-color 0.3s;
+        resize: none;
+      }
+      .cf-input:focus,
+      .cf-textarea:focus {
+        border-color: var(--sage);
+      }
+      .cf-input::placeholder,
+      .cf-textarea::placeholder {
+        color: var(--text-faint);
+      }
+      .cf-textarea {
+        height: 120px;
+      }
+      .cf-submit {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--moss);
+        border: none;
+        padding: 1rem 2.2rem;
+        cursor: pointer;
+        border-radius: 3px;
+        font-family: var(--sans);
+        align-self: flex-start;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+      }
+      .cf-submit:hover {
+        background: var(--sage);
+        transform: translateY(-2px);
+      }
+      .cf-success {
+        display: none;
+        font-size: 0.82rem;
+        color: var(--moss);
+        padding: 0.9rem 1.2rem;
+        border: 1px solid rgba(45, 90, 61, 0.25);
+        background: rgba(45, 90, 61, 0.06);
+        border-radius: 3px;
+        text-align: center;
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--forest);
+        padding: 2.5rem 3.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-logo {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        color: var(--white);
+      }
+      .footer-logo em {
+        font-style: italic;
+        color: var(--mint);
+      }
+      .footer-copy {
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        color: rgba(168, 213, 181, 0.4);
+      }
+      .footer-top {
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mint);
+        text-decoration: none;
+        transition: opacity 0.3s;
+      }
+      .footer-top:hover {
+        opacity: 0.7;
+      }
+
+      /* ANIMATIONS */
+      @keyframes slideRight {
+        from {
+          opacity: 0;
+          transform: translateX(-24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.7);
+        }
+      }
+      @keyframes scrollAnim {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        nav {
+          padding: 1.2rem 1.5rem;
+        }
+        nav.scrolled {
+          padding: 0.8rem 1.5rem;
+        }
+        .nav-links,
+        .nav-cta {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        #hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+        .hero-left {
+          min-height: auto;
+          padding: 6rem 1.5rem 2.5rem;
+          order: 1;
+        }
+        .hero-right {
+          min-height: 55vw;
+          order: 2;
+        }
+        .hero-scroll { display: none; }
+        .portrait-hex {
+          width: 200px;
+          height: 230px;
+        }
+        .portrait-hex-inner {
+          width: 185px;
+          height: 215px;
+        }
+        .pill-1,
+        .pill-2,
+        .pill-3 {
+          display: none;
+        }
+        .about-wrap {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .training-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .project-card {
+          grid-template-columns: 1fr;
+        }
+        .skills-layout {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .core-skills {
+          grid-template-columns: 1fr 1fr;
+        }
+        .leader-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-layout {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        section {
+          padding: 4.5rem 1.5rem;
+        }
+        footer {
+          padding: 1.8rem 1.5rem;
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+        /* Reduce hero animation translate so text stays in view */
+        .hero-name { font-size: clamp(2.6rem, 10vw, 4rem); }
+        .hero-tagline { font-size: 0.9rem; }
+        .hero-actions { flex-wrap: wrap; }
+      }
+      @media (max-width: 600px) {
+        .training-grid {
+          grid-template-columns: 1fr;
+        }
+        .cf-row {
+          grid-template-columns: 1fr;
+        }
+        .about-stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .core-skills {
+          grid-template-columns: 1fr;
+        }
+        .project-stats {
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+        /* Make exp cards readable on small screens */
+        .exp-card { grid-template-columns: 2.5rem 1fr; gap: 1rem; }
+        .hero-right { min-height: 70vw; }
+        .portrait-hex { width: 160px; height: 185px; }
+        .portrait-hex-inner { width: 148px; height: 172px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" onclick="closeMobile()">About</a>
+      <a href="#experience" onclick="closeMobile()">Experience</a>
+      <a href="#training" onclick="closeMobile()">Lab Training</a>
+      <a href="#projects" onclick="closeMobile()">Projects</a>
+      <a href="#skills" onclick="closeMobile()">Skills</a>
+      <a href="#contact" onclick="closeMobile()">Contact</a>
+    </div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="#" class="nav-logo"><em>Asmaa</em> Kareem</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#training">Lab Training</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Contact Me</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero">
+      <div class="hero-bg-circle hbc-1"></div>
+      <div class="hero-bg-circle hbc-2"></div>
+      <div class="hero-bg-circle hbc-3"></div>
+      <div class="hero-leaf-pattern"></div>
+
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Chemistry Graduate &amp; Environmental Advocate
+        </div>
+        <h1 class="hero-name">Asmaa<br />Kareem<br /><em>Mustafa</em></h1>
+        <div
+          class="hero-title"
+          style="opacity: 0; animation: slideRight 0.9s ease 0.6s forwards"
+        >
+          Scientist · Innovator · Community Leader
+        </div>
+        <p class="hero-tagline">
+          A chemistry graduate with a passion for environmental sustainability
+          and laboratory research driving eco conscious impact through
+          science, education, and community engagement.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-hero">View My Work</a>
+          <a href="#contact" class="btn-outline">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-portrait-frame">
+          <div class="portrait-hex">
+            <div class="portrait-hex-inner">
+              <img
+                src="img/asmaa_mzori.jpg"
+                alt="Portrait"
+                class="portrait-img"
+              />
+            </div>
+          </div>
+          <div class="hex-glow"></div>
+
+          <!-- Floating pills -->
+          <div class="float-pill pill-1">
+            <span class="pill-icon">🧪</span>
+            <div>
+              <div class="pill-label">Degree</div>
+              <div class="pill-val">BSc Chemistry</div>
+            </div>
+          </div>
+          <div class="float-pill pill-2">
+            <span class="pill-icon">🌱</span>
+            <div>
+              <div class="pill-label">Focus</div>
+              <div class="pill-val">Environmental Science</div>
+            </div>
+          </div>
+          <div class="float-pill pill-3">
+            <span class="pill-icon">📍</span>
+            <div>
+              <div class="pill-label">Location</div>
+              <div class="pill-val">Duhok, Iraq</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll">
+        <span>Scroll to explore</span>
+        <div class="scroll-bar"></div>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section id="about">
+      <div class="about-wrap">
+        <div class="about-text reveal">
+          <div class="sec-label">About Me</div>
+          <h2 class="sec-title">Science Meets <em>Purpose</em></h2>
+          <hr class="sec-rule" />
+          <div class="about-objective">
+            A chemistry graduate with a strong passion for environmental
+            sustainability and laboratory research. Seeking to apply scientific
+            knowledge in laboratory analysis, education, and community
+            engagement through impactful, eco-conscious projects that support
+            public health and sustainable development.
+          </div>
+          <p>
+            My journey from the laboratory benches of the University of Duhok to
+            community outreach across the Kurdistan region reflects a core
+            belief: that science is most powerful when it serves people. I
+            combine rigorous analytical thinking with a genuine drive to connect
+            research findings to real-world impact.
+          </p>
+          <p>
+            Whether coordinating innovation hubs with UNICEF, testing household
+            water quality for 222 families, or leading tree-planting campaigns
+            across Duhok — I bring both technical precision and human warmth to
+            every initiative.
+          </p>
+
+          <div class="about-langs">
+            <div class="lang-chip">
+              <span class="lang-name">Kurdish</span
+              ><span class="lang-level">Native</span>
+            </div>
+            <div class="lang-chip">
+              <span class="lang-name">Arabic</span
+              ><span class="lang-level">Fluent</span>
+            </div>
+            <div class="lang-chip">
+              <span class="lang-name">English</span
+              ><span class="lang-level">Intermediate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right reveal">
+          <div class="about-stats">
+            <div class="astat">
+              <div class="astat-num" data-count="222" data-suffix="">0</div>
+              <div class="astat-label">Households Studied</div>
+            </div>
+            <div class="astat">
+              <div class="astat-num" data-count="90" data-suffix="+">0+</div>
+              <div class="astat-label">Students Led</div>
+            </div>
+            <div class="astat">
+              <div class="astat-num" data-count="3" data-suffix="">0</div>
+              <div class="astat-label">Lab Internships</div>
+            </div>
+            <div class="astat">
+              <div class="astat-num" data-count="2" data-suffix="+">0+</div>
+              <div class="astat-label">Years Community Work</div>
+            </div>
+          </div>
+
+          <div
+            class="sec-label"
+            style="margin-top: 1.5rem; margin-bottom: 0.8rem"
+          >
+            Certifications
+          </div>
+          <div class="cert-chips">
+            <span class="cert-chip">Climate Change Camp — 2024</span>
+            <span class="cert-chip">Coding Bootcamp — 2023</span>
+            <span class="cert-chip">First Aid &amp; Vital Signs</span>
+            <span class="cert-chip">UoK &amp; Supreme Council for Youth</span>
+            <span class="cert-chip">Barzani Charity Foundation</span>
+            <span class="cert-chip">Duhok Polytechnic University</span>
+          </div>
+
+          <div
+            class="sec-label"
+            style="margin-top: 1.8rem; margin-bottom: 0.8rem"
+          >
+            Education
+          </div>
+          <div
+            style="
+              background: var(--deep);
+              border-radius: 6px;
+              padding: 1.4rem 1.6rem;
+              color: var(--white);
+            "
+          >
+            <div
+              style="
+                font-family: var(--serif);
+                font-size: 1.15rem;
+                font-weight: 400;
+              "
+            >
+              Bachelor's Degree in Chemistry
+            </div>
+            <div
+              style="font-size: 0.75rem; color: var(--mint); margin-top: 0.3rem"
+            >
+              University of Duhok, College of Science
+            </div>
+            <div
+              style="
+                font-size: 0.65rem;
+                letter-spacing: 0.1em;
+                color: rgba(168, 213, 181, 0.5);
+                margin-top: 0.2rem;
+                text-transform: uppercase;
+                font-weight: 600;
+              "
+            >
+              2023 – 2024
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ EXPERIENCE ═══ -->
+    <section id="experience">
+      <div class="exp-inner">
+        <div class="reveal">
+          <div class="sec-label">Work History</div>
+          <h2 class="sec-title">Professional <em>Experience</em></h2>
+          <hr class="sec-rule" />
+        </div>
+
+        <div class="exp-grid">
+          <!-- Job 1 -->
+          <div class="exp-card">
+            <div class="exp-dot-wrap"><div class="exp-dot current"></div></div>
+            <div class="exp-body">
+              <div class="exp-period">Dec 2025 – Present</div>
+              <div class="exp-role">
+                Project Assistant &amp; Social Media Manager
+              </div>
+              <div class="exp-org">
+                H2 Innovation Hub (UNICEF &amp; University of Duhok)
+                <span class="exp-org-badge">Current</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>
+                  Manage Hub operations and welcome visitors, presenting its
+                  mission to diverse audiences.
+                </li>
+                <li>
+                  Support student teams in developing ideas into prototypes and
+                  actionable proposals.
+                </li>
+                <li>
+                  Coordinate innovation programs, workshops, and events for the
+                  university community.
+                </li>
+                <li>
+                  Prepare reports, maintain records, and facilitate internal and
+                  external communications.
+                </li>
+                <li>
+                  Design promotional materials and manage social media content
+                  for Hub activities.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 2 -->
+          <div class="exp-card">
+            <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+            <div class="exp-body">
+              <div class="exp-period">Aug 2025 – Dec 2025</div>
+              <div class="exp-role">Information Desk Officer</div>
+              <div class="exp-org">
+                University of Duhok – Counseling &amp; Student Services Center
+              </div>
+              <ul class="exp-bullets">
+                <li>
+                  Provided front-desk support and guided students to appropriate
+                  counseling services.
+                </li>
+                <li>
+                  Managed appointments, data entry, and documentation with high
+                  accuracy.
+                </li>
+                <li>
+                  Maintained confidentiality standards and facilitated smooth
+                  service delivery.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 3 -->
+          <div class="exp-card">
+            <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+            <div class="exp-body">
+              <div class="exp-period">Dec 2024 – Jun 2025</div>
+              <div class="exp-role">Marketing Representative</div>
+              <div class="exp-org">
+                War Company – Farmona Natural Products · Duhok
+              </div>
+              <ul class="exp-bullets">
+                <li>
+                  Promoted Farmona's natural medical skincare products through
+                  public awareness campaigns.
+                </li>
+                <li>
+                  Provided customer consultations on safe and science-backed
+                  skincare practices.
+                </li>
+                <li>
+                  Represented the brand in community events to increase product
+                  awareness and trust.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ LAB TRAINING ═══ -->
+    <section id="training">
+      <div class="training-inner">
+        <div class="reveal">
+          <div class="sec-label">Scientific Foundations</div>
+          <h2 class="sec-title">Laboratory <em>Training</em></h2>
+          <hr
+            class="sec-rule"
+            style="border-color: rgba(168, 213, 181, 0.15)"
+          />
+          <p
+            style="
+              font-size: 0.9rem;
+              line-height: 1.8;
+              color: rgba(168, 213, 181, 0.55);
+              max-width: 520px;
+            "
+          >
+            Three consecutive internships building a comprehensive foundation
+            across environmental, biochemical, and clinical laboratory
+            disciplines.
+          </p>
+        </div>
+
+        <div class="training-grid">
+          <div class="train-card">
+            <div class="train-icon">🌿</div>
+            <div class="train-period">Jun – Jul 2023</div>
+            <div class="train-title">Environmental Laboratory Training</div>
+            <div class="train-org">Duhok Environment Department</div>
+            <p class="train-desc">
+              Conducted environmental sample analysis and water quality testing.
+              Assisted in recording laboratory results and preparing scientific
+              reports for departmental use.
+            </p>
+          </div>
+          <div class="train-card">
+            <div class="train-icon">🔬</div>
+            <div class="train-period">Jul – Aug 2022</div>
+            <div class="train-title">
+              Biochemical &amp; Medical Lab Training
+            </div>
+            <div class="train-org">Duhok Emergency Hospital</div>
+            <p class="train-desc">
+              Observed diagnostic laboratory procedures and sample preparation
+              techniques in a live clinical setting. Gained hands-on experience
+              with biochemical testing protocols.
+            </p>
+          </div>
+          <div class="train-card">
+            <div class="train-icon">🧬</div>
+            <div class="train-period">Jul – Aug 2021</div>
+            <div class="train-title">
+              Clinical &amp; Pathological Analysis Training
+            </div>
+            <div class="train-org">GENOME Laboratory, Duhok</div>
+            <p class="train-desc">
+              Assisted with sample handling and laboratory documentation.
+              Learned fundamentals of clinical analysis procedures and developed
+              core laboratory discipline.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROJECTS ═══ -->
+    <section id="projects">
+      <div class="projects-inner">
+        <div class="reveal">
+          <div class="sec-label">Featured Work</div>
+          <h2 class="sec-title">Key <em>Project</em></h2>
+          <hr class="sec-rule" />
+        </div>
+
+        <div class="project-card">
+          <div class="project-visual">
+            <div class="project-big-icon">💧</div>
+            <div class="project-badge">Team Leader · PAR Project</div>
+          </div>
+          <div class="project-content">
+            <div class="project-period">Oct 2024 – Jan 2025</div>
+            <div class="project-title">Aqua Heroes</div>
+            <div class="project-sub">
+              University of Duhok in Collaboration with UNICEF
+            </div>
+            <div class="project-highlights">
+              <div class="proj-hl">
+                <span class="proj-hl-dot"></span>Investigated water storage
+                quality across 222 households throughout Duhok.
+              </div>
+              <div class="proj-hl">
+                <span class="proj-hl-dot"></span>Conducted scientific water
+                testing including pH measurement and TDS analysis.
+              </div>
+              <div class="proj-hl">
+                <span class="proj-hl-dot"></span>Linked test results to public
+                health risks and presented findings to local authorities.
+              </div>
+              <div class="proj-hl">
+                <span class="proj-hl-dot"></span>Prepared comprehensive UNICEF
+                research report on household water tank quality.
+              </div>
+              <div class="proj-hl">
+                <span class="proj-hl-dot"></span>Developed actionable
+                recommendations for safer household water storage practices.
+              </div>
+            </div>
+            <div class="project-stats">
+              <div>
+                <div class="pstat-num">222</div>
+                <div class="pstat-label">Households Tested</div>
+              </div>
+              <div>
+                <div class="pstat-num">2</div>
+                <div class="pstat-label">Test Parameters</div>
+              </div>
+              <div>
+                <div class="pstat-num">1</div>
+                <div class="pstat-label">UNICEF Report</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SKILLS ═══ -->
+    <section id="skills">
+      <div class="skills-inner">
+        <div class="reveal">
+          <div class="sec-label">Capabilities</div>
+          <h2 class="sec-title">Skills &amp; <em>Expertise</em></h2>
+          <hr class="sec-rule" />
+        </div>
+        <div class="skills-layout">
+          <div>
+            <div class="skill-group-title">Technical Skills</div>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <div class="skill-bar-top">
+                  <span class="skill-name"
+                    >Laboratory Analysis &amp; Sample Preparation</span
+                  ><span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="skill-fill" data-pct="90"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-top">
+                  <span class="skill-name">Water Quality Testing (pH, TDS)</span
+                  ><span class="skill-pct">88%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="skill-fill" data-pct="88"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-top">
+                  <span class="skill-name"
+                    >Data Collection &amp; Scientific Reporting</span
+                  ><span class="skill-pct">85%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="skill-fill" data-pct="85"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-top">
+                  <span class="skill-name"
+                    >Social Media Management &amp; Content Design</span
+                  ><span class="skill-pct">80%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="skill-fill" data-pct="80"></div>
+                </div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-top">
+                  <span class="skill-name"
+                    >Microsoft Office (Word, Excel, PowerPoint)</span
+                  ><span class="skill-pct">82%</span>
+                </div>
+                <div class="skill-track">
+                  <div class="skill-fill" data-pct="82"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group-title" style="margin-top: 2.5rem">
+              Certifications
+            </div>
+            <div class="cert-list">
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-text">Climate Change Camp Certificate</div>
+                  <div class="cert-year">
+                    University of Kurdistan &amp; Supreme Council for Youth ·
+                    2024
+                  </div>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-text">Coding Bootcamp Certificate</div>
+                  <div class="cert-year">
+                    Barzani Charity Foundation &amp; American Corner · 2023
+                  </div>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-text">
+                    First Aid &amp; Vital Signs Training
+                  </div>
+                  <div class="cert-year">Duhok Polytechnic University</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="skill-group-title">Core Competencies</div>
+            <div class="core-skills">
+              <div class="core-skill">
+                <span class="cs-icon">👥</span>Leadership &amp; Teamwork
+              </div>
+              <div class="core-skill">
+                <span class="cs-icon">🌍</span>Community Engagement
+              </div>
+              <div class="core-skill">
+                <span class="cs-icon">🧠</span>Analytical Thinking
+              </div>
+              <div class="core-skill">
+                <span class="cs-icon">🎯</span>Problem Solving
+              </div>
+              <div class="core-skill">
+                <span class="cs-icon">🔬</span>Lab Discipline
+              </div>
+              <div class="core-skill">
+                <span class="cs-icon">📋</span>Report Writing
+              </div>
+              <div class="core-skill">
+                <span class="cs-icon">⏱️</span>Time Management
+              </div>
+              <div class="core-skill">
+                <span class="cs-icon">📢</span>Awareness Campaigns
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ LEADERSHIP ═══ -->
+    <section id="leadership">
+      <div class="leadership-inner">
+        <div class="reveal">
+          <div class="sec-label">Giving Back</div>
+          <h2 class="sec-title">Leadership &amp; <em>Community</em></h2>
+          <hr
+            class="sec-rule"
+            style="border-color: rgba(168, 213, 181, 0.15)"
+          />
+        </div>
+        <div class="leader-grid">
+          <div class="leader-card">
+            <div class="leader-icon">⚗️</div>
+            <div class="leader-period">Sep 2022 – Nov 2024</div>
+            <div class="leader-role">
+              Chapter Leader – ACS International Student Chapter
+            </div>
+            <div class="leader-org">University of Duhok</div>
+            <p class="leader-desc">
+              Led scientific and health awareness campaigns reaching 90+
+              students. Organized workshops, seminars, and interdepartmental
+              events. Represented the chapter in official university activities
+              and media.
+            </p>
+          </div>
+          <div class="leader-card">
+            <div class="leader-icon">🌳</div>
+            <div class="leader-period">Aug 2022 – Dec 2024</div>
+            <div class="leader-role">Environmental Activist</div>
+            <div class="leader-org">Aviar Organization, Duhok</div>
+            <p class="leader-desc">
+              Organized environmental seminars and outreach programs in schools
+              across Duhok. Led tree-planting campaigns throughout the region.
+              Participated in climate-related workshops and contributed to
+              proposal writing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact">
+      <div class="contact-inner">
+        <div
+          class="reveal"
+          style="text-align: center; max-width: 550px; margin: 0 auto"
+        >
+          <div class="sec-label" style="justify-content: center">
+            <span
+              style="
+                width: 20px;
+                height: 1.5px;
+                background: var(--sage);
+                display: block;
+              "
+            ></span
+            >Let's Connect<span
+              style="
+                width: 20px;
+                height: 1.5px;
+                background: var(--sage);
+                display: block;
+              "
+            ></span>
+          </div>
+          <h2 class="sec-title">Get In <em>Touch</em></h2>
+          <hr class="sec-rule" />
+        </div>
+        <div class="contact-layout">
+          <div class="reveal">
+            <p class="contact-info-text">
+              Open to opportunities in laboratory research, environmental
+              consultancy, science education, and community-driven
+              sustainability projects. I'd love to hear from you.
+            </p>
+            <div class="cinfo-items">
+              <div class="cinfo-item">
+                <div class="cinfo-icon">✉</div>
+                <div>
+                  <div class="cinfo-label">Email</div>
+                  <div class="cinfo-val">asmaa.mzori2001@gmail.com</div>
+                </div>
+              </div>
+              <div class="cinfo-item">
+                <div class="cinfo-icon">📞</div>
+                <div>
+                  <div class="cinfo-label">Phone</div>
+                  <div class="cinfo-val">+964 751 839 4762</div>
+                </div>
+              </div>
+              <div class="cinfo-item">
+                <div class="cinfo-icon">📍</div>
+                <div>
+                  <div class="cinfo-label">Location</div>
+                  <div class="cinfo-val">Sarhldan, Duhok, Iraq</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="refs-section">
+              <div class="refs-title">Professional References</div>
+              <div class="ref-list">
+                <div class="ref-item">
+                  <div class="ref-name">Dr. Suhad Yasin</div>
+                  Supervisor, ACS Chapter – UoD · suhad.yasin@uod.ac · 0750 432
+                  7220
+                </div>
+                <div class="ref-item">
+                  <div class="ref-name">Dr. Mohamed Aziz</div>
+                  Director, PAR Project – UoD · mohammed.ibrahem@uod.ac · 0750
+                  458 2358
+                </div>
+                <div class="ref-item">
+                  <div class="ref-name">Mr. Aso Shkak</div>
+                  Director, Aviar Organization · 0751 403 1549
+                </div>
+                <div class="ref-item">
+                  <div class="ref-name">Mr. Khalid Barwari</div>
+                  Founder, War Company · 0750 446 0187
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo"><em>Asmaa</em> Kareem Mustafa</div>
+      <div class="footer-copy">© 2026 Asmaa Kareem Mustafa · Duhok, Iraq</div>
+      <div class="footer-copy">
+  Designed By 
+  <a href="https://www.instagram.com/janan.sinde?igsh=a2tzaHdpY2U0a2tp" style="color:orangered; text-decoration:none;">
+    Janan Sabah
+  </a>
+</div>
+      <a href="#hero" class="footer-top">↑ Back to top</a>
+    </footer>
+
+    <script>
+      // Cursor
+      const cursor = document.getElementById("cursor");
+      const ring = document.getElementById("cursorRing");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+
+      (function anim() {
+        rx += (mx - rx) * 0.1;
+        ry += (my - ry) * 0.1;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(anim);
+      })();
+      document
+        .querySelectorAll(
+          "a,button,.astat,.train-card,.leader-card,.achievement-card,.core-skill,.lang-chip,.badge",
+        )
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cursor.classList.add("hover");
+            ring.classList.add("hover");
+          });
+          el.addEventListener("mouseleave", () => {
+            cursor.classList.remove("hover");
+            ring.classList.remove("hover");
+          });
+        });
+
+      // Nav scroll
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () =>
+        navbar.classList.toggle("scrolled", window.scrollY > 60),
+      );
+
+      // Mobile menu
+      const mobileMenu = document.getElementById("mobileMenu");
+      function toggleMobile() {
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "";
+      }
+      function closeMobile() {
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add("visible"), i * 80);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: '0px 0px -60px 0px' },
+      );
+      document
+        .querySelectorAll(
+          ".reveal,.exp-card,.train-card,.leader-card,.project-card",
+        )
+        .forEach((el) => observer.observe(el));
+
+      // Skill bars
+      const skillObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.querySelectorAll(".skill-fill").forEach((fill) => {
+                fill.style.width = fill.dataset.pct + "%";
+              });
+              skillObs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: '0px 0px -60px 0px' },
+      );
+      const skillSection = document.getElementById("skills");
+      if (skillSection) skillObs.observe(skillSection);
+
+      // Counter - observe each stat individually so mobile scroll triggers correctly
+      function animateCount(el) {
+        if (el._counted) return;
+        el._counted = true;
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix !== undefined ? el.dataset.suffix : '';
+        const dur = 1600;
+        const start = performance.now();
+        function tick(now) {
+          const t = Math.min((now - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(target * ease) + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      const cntObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCount(entry.target);
+              cntObs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: '0px 0px -40px 0px' },
+      );
+      document.querySelectorAll("[data-count]").forEach(el => cntObs.observe(el));
+
+      // Form
+      function submitForm() {
+        const inputs = document.querySelectorAll(
+          "#contactForm .cf-input, #contactForm .cf-textarea",
+        );
+        let valid = true;
+        inputs.forEach((i) => {
+          if (!i.value.trim()) {
+            i.style.borderColor = "rgba(180,60,60,.4)";
+            valid = false;
+          } else i.style.borderColor = "";
+        });
+        if (!valid) return;
+        const btn = document.querySelector(".cf-submit");
+        btn.textContent = "Sending…";
+        btn.disabled = true;
+        setTimeout(() => {
+          document.getElementById("formSuccess").style.display = "block";
+          btn.style.display = "none";
+          inputs.forEach((i) => {
+            i.value = "";
+            i.disabled = true;
+          });
+        }, 1200);
+      }
+
+      // Active nav highlight
+      const sections = document.querySelectorAll("section[id]");
+      const navAs = document.querySelectorAll(".nav-links a");
+      window.addEventListener("scroll", () => {
+        let cur = "";
+        sections.forEach((s) => {
+          if (window.scrollY >= s.offsetTop - 180) cur = s.id;
+        });
+        navAs.forEach((a) => {
+          a.style.color =
+            a.getAttribute("href") === "#" + cur ? "var(--forest)" : "";
+        });
+      });
+    </script>
+  </body>
+</html>
